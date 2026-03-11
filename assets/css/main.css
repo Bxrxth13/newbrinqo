@@ -1068,21 +1068,139 @@ a.log-in-btn:hover:after {
 
 /* ── Hero H1 size override ───────────────────────────────────────── */
 .Brinqo-hero-content h1 {
-  font-size: 64px;
-  line-height: 1.05em;
-  letter-spacing: -0.5px;
+  font-size: 86px;
+  line-height: 0.95em;
+  letter-spacing: -1.5px;
 }
 
 @media (max-width: 1400px) {
   .Brinqo-hero-content h1 {
-    font-size: 48px;
+    font-size: 64px;
   }
 }
 
 @media (max-width: 767px) {
-  .Brinqo-hero-content h1 {
-    font-size: 32px;
+  .Brinqo-hero-section {
+    padding-top: 100px !important;
+    padding-bottom: 60px !important;
+    text-align: center;
+    overflow-x: hidden;
   }
+
+  .Brinqo-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .Brinqo-hero-content h1 {
+    font-size: 38px !important;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .Brinqo-hero-content p {
+    font-size: 16px !important;
+    line-height: 1.6;
+    margin: 20px auto 30px !important;
+    padding: 0 10px !important;
+    max-width: 320px !important;
+  }
+
+  .hero-actions-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+
+  .hero-primary-btn {
+    width: 280px !important;
+    justify-content: center;
+    padding: 14px 20px !important;
+    font-size: 12px !important;
+  }
+
+  .hero-caps {
+    width: 100% !important;
+    margin: 30px 0 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cap-list {
+    justify-content: center;
+    gap: 15px !important;
+    flex-wrap: wrap !important;
+    width: 100%;
+  }
+
+  .cap-item {
+    font-size: 11px !important;
+  }
+}
+
+.Brinqo-hero-content p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-top: 25px;
+  max-width: 650px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 991px) {
+  .Brinqo-hero-content p {
+    font-size: 16px;
+  }
+}
+
+.hero-cta-group {
+  margin-top: 45px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.hero-caps {
+  margin-top: 25px;
+  max-width: 500px;
+}
+
+.cap-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.cap-list {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.cap-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.cap-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-color);
 }
 
 /* "LIFE." accent color in hero */
@@ -1123,6 +1241,7 @@ a.log-in-btn:hover:after {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  position: relative;
 }
 
 .hero-card .icon-wrap {
@@ -1211,4 +1330,110 @@ a.log-in-btn:hover:after {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+/* View More Button - slides in on hover */
+.hero-card .card-view-more {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.hero-card:hover .card-view-more {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#card-build .card-view-more {
+  background: #18181b;
+  color: #fff;
+}
+
+#card-brand .card-view-more {
+  background: rgba(255, 255, 255, 0.92);
+  color: #E73250;
+}
+
+#card-bridge .card-view-more {
+  background: #E73250;
+  color: #fff;
+}
+
+.hero-card .card-view-more svg {
+  transition: transform 0.2s ease;
+}
+
+.hero-card:hover .card-view-more svg {
+  transform: translateX(3px);
+}
+
+/* ── Premium Hero Primary Button ──────────────────────────────────── */
+.hero-primary-btn {
+  background: var(--accent-color);
+  color: #fff;
+  padding: 14px 28px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 99px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(231, 50, 80, 0.3);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.hero-primary-btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.6s ease;
+  z-index: -1;
+}
+
+.hero-primary-btn:hover:before {
+  left: 100%;
+}
+
+.hero-primary-btn:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(231, 50, 80, 0.5);
+  color: #fff !important;
+}
+
+.hero-primary-btn .btn-arrow {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.hero-primary-btn:hover .btn-arrow {
+  transform: translateX(6px);
 }

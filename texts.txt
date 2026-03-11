@@ -247,7 +247,7 @@ className:"text-blue-300",children:"deploy"
 className:"text-purple-400",children:"async"
 className:"text-yellow-300",children:"await"
 className:"text-blue-400",children:"Launch"
-children:["
+children:["0
 className:"absolute top-0 right-0 p-4 text-xs text-slate-600",children:"v2.0.4"
 id:"services",className:"py-24 bg-slate-50",children:u.jsxs("div",
 className:"container-custom",children:[u.jsxs("div",
