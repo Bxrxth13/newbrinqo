@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cards Component</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #f4f4f5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .cards-wrapper {
+      width: 100%;
+      max-width: 860px;
+      opacity: 0;
+      transform: translateX(50px);
+      animation: slideIn 0.5s 0.1s ease forwards;
+    }
+
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1rem;
+      height: 500px;
+    }
+
+    /* ── Shared card base ── */
+    .card {
+      position: relative;
+      border-radius: 2rem;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .card:hover .card-bg-img { opacity: 1; }
+
+    .card-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    .card-body {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .icon-wrap {
+      background: white;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      width: fit-content;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .card:hover .icon-wrap {
+      background: #6d28d9; /* accent */
+    }
+
+    .icon-wrap svg { width: 24px; height: 24px; transition: stroke 0.3s; }
+    .card:hover .icon-wrap svg { stroke: white !important; }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-desc {
+      font-size: 0.75rem;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    .arrow-icon {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      width: 24px;
+      height: 24px;
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: opacity 0.3s, transform 0.3s;
+      stroke: white;
+    }
+
+    .card:hover .arrow-icon {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ── Card 1: BUILD (tall, spans 2 rows) ── */
+    #card-build {
+      grid-row: span 2;
+      background: #d1d5db;
+    }
+
+    #card-build .card-body { justify-content: flex-end; }
+
+    #card-build .icon-wrap { margin-bottom: auto; }
+
+    #card-build .card-title {
+      font-size: 1.875rem;
+      color: #18181b;
+    }
+
+    #card-build:hover .card-title { color: white; }
+
+    #card-build .card-title span { color: #6d28d9; }
+
+    #card-build .card-desc { color: #18181b; }
+    #card-build:hover .card-desc { color: white; }
+
+    /* ── Card 2: BRAND ── */
+    #card-brand { background: #f43f5e; }
+
+    #card-brand .card-body {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #card-brand .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    #card-brand .icon-wrap svg { stroke: #e11d48; }
+
+    #card-brand .card-title { font-size: 1.5rem; color: white; }
+    #card-brand .card-desc { color: rgba(255,255,255,0.9); }
+
+    /* ── Card 3: BRIDGE ── */
+    #card-bridge { background: #18181b; color: white; }
+
+    #card-bridge .card-body {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #card-bridge .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    #card-bridge .icon-wrap {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      box-shadow: none;
+    }
+
+    #card-bridge .icon-wrap svg { stroke: white; }
+    #card-bridge:hover .icon-wrap { background: #6d28d9; }
+
+    #card-bridge .card-title { font-size: 1.5rem; color: white; }
+    #card-bridge .card-desc { color: rgba(255,255,255,0.6); }
+    #card-bridge:hover .card-desc { color: rgba(255,255,255,0.8); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+      }
+      #card-build { grid-row: span 1; min-height: 300px; }
+      #card-brand, #card-bridge { min-height: 240px; }
+      .arrow-icon { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cards-wrapper">
+  <div class="grid">
+
+    <!-- Card 1: BUILD -->
+    <a id="card-build" class="card" href="/build" aria-label="Go to Build">
+      <img class="card-bg-img" src="/assets/code.webp" alt="Build" />
+      <div class="card-gradient"></div>
+      <div class="card-body">
+        <div class="icon-wrap">
+          <!-- Layers icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#18181b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="card-title"><span>BUILD</span></h3>
+          <p class="card-desc">Websites, apps, &amp; AI agents designed for scale.</p>
+        </div>
+      </div>
+      <!-- Arrow -->
+      <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </a>
+
+    <!-- Card 2: BRAND -->
+    <a id="card-brand" class="card" href="/brand" aria-label="Go to Brand">
+      <img class="card-bg-img" src="/assets/brand.png" alt="Brand" />
+      <div class="card-gradient"></div>
+      <div class="card-body">
+        <div class="top-row">
+          <div class="icon-wrap">
+            <!-- Zap icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h3 class="card-title">BRAND</h3>
+          <p class="card-desc">Marketing, identity, positioning, and growth</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 3: BRIDGE -->
+    <a id="card-bridge" class="card" href="/bridge" aria-label="Go to Bridge">
+      <img class="card-bg-img" src="/assets/bridge.webp" alt="Bridge" />
+      <div class="card-gradient"></div>
+      <div class="card-body">
+        <div class="top-row">
+          <div class="icon-wrap">
+            <!-- GitMerge icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/>
+              <path d="M6 21V9a9 9 0 0 0 9 9"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h3 class="card-title">BRIDGE</h3>
+          <p class="card-desc">Talent, training &amp; Delivery.</p>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>
