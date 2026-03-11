@@ -369,9 +369,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     });
   }); /*End document ready*/
 
-  $(window).on("resize", function () {}); // end window resize
+  $(window).on("resize", function () { }); // end window resize
 
-  $(window).on("load", function () {}); // End window LODE
+  $(window).on("load", function () { }); // End window LODE
 
   /*--------------------------------------------------------------
   Brinqo MAP JS
@@ -387,7 +387,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         scaleControl: false,
         draggable: true,
         disableDefaultUI: true,
-        center: new google.maps.LatLng(40.6700, -73.9400),
+        center: new google.maps.LatLng(35.7891, -78.7812),
         styles: [{
           "featureType": "landscape.man_made",
           "elementType": "geometry",
@@ -483,12 +483,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       var mapElement = document.getElementById('map');
       var map = new google.maps.Map(mapElement, mapOptions);
       var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(40.6700, -73.9400),
+        position: new google.maps.LatLng(35.7891, -78.7812),
         map: map,
         // icon: 'assets/images/all-img/contact/map.png',
-        title: 'fugu'
+        title: 'Brinqo'
       });
-      var contentString = '<div id="content">' + '<div id="tpw">' + '<h3>fugu' + '</div>';
+      var contentString = '<div id="content">' + '<div id="tpw">' + '<h3>Brinqo' + '</div>';
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
         maxWidth: 280
