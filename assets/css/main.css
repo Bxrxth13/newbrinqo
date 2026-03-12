@@ -1497,7 +1497,22 @@ a.log-in-btn:hover:after {
     margin-bottom: 12px;
   }
 
-  .blog-list-page .post-thumbnail img {
+  .blog-list-page .blog-list-page .post-thumbnail img {
     max-height: 180px;
   }
+}
+
+/* ── Footer logo size ─────────────────────────────────────── */
+.Brinqo-footer-logo img {
+  max-height: 48px;
+  width: auto;
+}
+
+/* ── X (Twitter) icon inside social circles ─────────────────── */
+.Brinqo-social-icon li a svg,
+.social-large li a svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: currentColor;
 }
