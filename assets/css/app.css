@@ -8945,7 +8945,7 @@ img.swipeimage {
   object-fit: cover;
   z-index: 9;
   opacity: 0;
-  visibily: hidden;
+  visibility: hidden;
   pointer-events: none;
   border-radius: 7px;
   border: 5px solid #fff;
@@ -9195,6 +9195,7 @@ a.forgot-password {
 .Brinqo-account-checkbox label:before {
   content: "";
   -webkit-appearance: none;
+  appearance: none;
   background-color: transparent;
   border: 1.5px solid #7F8995;
   padding: 7px;
@@ -10908,19 +10909,22 @@ a.Brinqo-connect-login img {
   margin-bottom: 24px;
   overflow: hidden;
   transition: 0.4s;
-  padding: 24px;
-  border-radius: 20px;
+  padding: 16px;
+  border-radius: 12px;
   background-color: #FFFDF8;
   border: 1px solid var(--heading-color);
 }
 
 .post-thumbnail {
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 12px;
 }
 
 .post-thumbnail img {
-  border-radius: 20px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
   transition: all 0.5s;
   transform: scale(1);
 }
@@ -10930,21 +10934,21 @@ a.Brinqo-connect-login img {
 }
 
 .post-content {
-  padding-top: 24px;
+  padding-top: 16px;
 }
 
 .post-meta {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .post-category a {
-  padding: 9px 23px;
+  padding: 6px 16px;
   border-radius: 50px;
   display: inline-block;
-  font-size: 16px;
-  margin-right: 24px;
+  font-size: 14px;
+  margin-right: 16px;
   letter-spacing: 0.5px;
   transition: all 0.4s;
   color: var(--heading-color3);
@@ -10957,16 +10961,23 @@ a.Brinqo-connect-login img {
 }
 
 .post-date {
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 0.5px;
 }
 
 h3.entry-title {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.post-content p {
   margin-bottom: 15px;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 a.post-read-more {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: capitalize;
   color: var(--heading-color);
@@ -11092,6 +11103,9 @@ a.post-read-more:hover img {
 }
 
 .post-thumb img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   border-radius: 10px;
 }
 
